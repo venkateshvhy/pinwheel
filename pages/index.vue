@@ -1,14 +1,14 @@
 <script setup lang="ts">
-
+useHead({
+  title: "Pinwheel-tailwind",
+});
 </script>
 <template>
-    <div class="relative">
-        <nav-bar></nav-bar>
-        <img src="../assets/img/banner-shape.svg" alt="" class="-z-10 absolute -top-7 right-0">
-    </div>
+  <div class="relative">
+    <nav-bar></nav-bar>
+    <download-theme-content></download-theme-content>
+    <features></features>
+  </div>
 </template>
 
-
-<style scoped>
-
-</style>
+<style scoped></style>

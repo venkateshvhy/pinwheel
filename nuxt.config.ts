@@ -21,7 +21,8 @@ export default defineNuxtConfig({
     families: {
       Roboto: true,
       Lato: [100, 300, 400, 700],
-      Poppins: true
+      Poppins: true,
+      Merriweather: true
     },
   },
 });
