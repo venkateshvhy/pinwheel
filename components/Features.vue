@@ -65,13 +65,13 @@ const options = [
       <div class="mb-12 lg:flex lg:justify-between lg:items-start">
         <div>
           <h2
-            class="mb-4 text-[3rem] font-bold lg:text-4xl heading leading-1 md:text-center lg:text-start"
+            class="mb-4 text-[1.9rem] font-bold md:text-[2.4rem] heading leading-1 md:text-center lg:text-start"
           >
             The Highlighting Part Of Our Solution
           </h2>
         </div>
         <div class="lg:max-w-md">
-          <p class="text-gray-600 desc md:text-center lg:text-start">
+          <p class="text-[#888] desc md:text-center lg:text-start">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
             egestas Werat viverra id et aliquet. vulputate egestas sollicitudin.
           </p>
@@ -89,7 +89,7 @@ const options = [
           v-for="item in options"
         >
           <h3
-            class="text-xl h4 lg:text-2xl heading text-[1.25rem] font-bold"
+            class="text-xl h4 heading text-[1.25rem] font-bold"
             style="line-height: 1.75rem"
           >
             {{ item.label }}

@@ -22,7 +22,17 @@ export default defineNuxtConfig({
       Roboto: true,
       Lato: [100, 300, 400, 700],
       Poppins: true,
-      Merriweather: true
+      // Merriweather: true,
+    },
+  },
+  app: {
+    head: {
+      link: [
+        {
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&display=swap",
+        },
+      ],
     },
   },
 });

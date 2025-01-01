@@ -9,8 +9,8 @@ import PWButton from "~/common/PW-Button.vue";
         <!-- Left content -->
         <div class="max-w-xl space-y-6">
           <h1
-            class="text-[2.9rem] font-bold text-[#222222] leading-tight"
-            style="font-family: 'Merriweather !important;"
+            class="text-[2.3rem] font-bold text-[#222222] leading-tight md:text-[2.9rem]"
+            style="font-family: Merriweather, sans-serif; --tw-text-opacity: 1;"
           >
             Scale design & dev operations with Avocode Enterprise
           </h1>
