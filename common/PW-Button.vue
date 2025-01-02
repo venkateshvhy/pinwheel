@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script  setup lang="ts">
 defineProps({
   label: String,
 });
@@ -14,7 +14,7 @@ defineProps({
 
 <style scoped>
 * {
-  font-family: Poppins, "sans-serif";
+  font-family: var(--secondary-font);
 }
 .btn-white {
   min-width: 150px;
@@ -31,10 +31,10 @@ defineProps({
     0 4px 6px -4px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color),
     0 4px 6px -4px var(--tw-shadow-color);
-  -webkit-box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
-    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
-    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  -webkit-box-shadow: var(--tw-ring-offset-shadow, 0 0 #000000),
+    var(--tw-ring-shadow, 0 0 #000000), var(--tw-shadow);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #000000),
+    var(--tw-ring-shadow, 0 0 #000000), var(--tw-shadow);
   -webkit-box-shadow: 0px 15px 34px rgba(0, 0, 0, 0.1);
   box-shadow: 0px 15px 34px rgba(0, 0, 0, 0.1);
 }

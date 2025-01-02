@@ -10,11 +10,11 @@ import PWButton from "~/common/PW-Button.vue";
         <div class="max-w-xl space-y-6">
           <h1
             class="text-[2.3rem] font-bold text-[#222222] leading-tight md:text-[2.9rem]"
-            style="font-family: Merriweather, sans-serif; --tw-text-opacity: 1;"
+            style="font-family: var(--primary-font); --tw-text-opacity: 1;"
           >
             Scale design & dev operations with Avocode Enterprise
           </h1>
-          <p class="text-lg text-[#666]">
+          <p class="text-lg text-[#666666]">
             A fully integrated suite of authentication & authoriz products,
             Stytch's platform removes the headache of.
           </p>
@@ -26,7 +26,7 @@ import PWButton from "~/common/PW-Button.vue";
         <!-- Right content - Stats Card -->
         <div class="flex">
           <img
-            src="../assets/img/netincome.png"
+            :src="Images.NetIncomeImage"
             alt="Income chart"
             class="object-contain w-full"
             width="603"
@@ -36,8 +36,8 @@ import PWButton from "~/common/PW-Button.vue";
       </div>
     </div>
     <img
-      src="../assets/img/banner-shape.svg"
-      alt=""
+      :src="Images.BannerImage"
+      alt="banner"
       class="banner-shape absolute -top-28 right-0 -z-[1] w-full max-w-[30%]"
     />
   </div>
@@ -45,7 +45,7 @@ import PWButton from "~/common/PW-Button.vue";
 
 <style scoped>
 * {
-  font-family: Poppins, "sans-serif";
+  font-family: var(--secondary-font);
 }
 .container {
   max-width: 1280px;

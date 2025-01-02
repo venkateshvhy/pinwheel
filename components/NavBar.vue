@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { ref, watch } from "vue";
+import { ref, watch, onMounted, onUnmounted } from "vue";
 import PWButton from "~/common/PW-Button.vue";
 
 const isMobileMenuOpen = ref(false);
 const activeDropdown = ref<string | null>(null);
 const isHoveringDropdown = ref(false);
 const closeTimeoutRef = ref<number | null>(null);
+const isScrolled = ref(false);
 
 const navItems = [
   { label: "Home", value: "Home" },
@@ -31,7 +32,6 @@ const navItems = [
 
 const toggleMobileMenu = () => {
   isMobileMenuOpen.value = !isMobileMenuOpen.value;
-  // Close any open dropdowns when toggling mobile menu
   activeDropdown.value = null;
 };
 
@@ -50,10 +50,21 @@ const handleMouseLeave = (isMobile: boolean = false) => {
     if (!isHoveringDropdown.value) {
       activeDropdown.value = null;
     }
-  }, isMobile ? 300 : 100); // Longer timeout for mobile
+  }, isMobile ? 300 : 100);
 };
 
-// Clean up timeout on component unmount
+const handleScroll = () => {
+  isScrolled.value = window.scrollY > 0;
+};
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll);
+});
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll);
+});
+
 watch(() => activeDropdown.value, (newValue, oldValue) => {
   if (!newValue && closeTimeoutRef.value) {
     clearTimeout(closeTimeoutRef.value);
@@ -63,13 +74,12 @@ watch(() => activeDropdown.value, (newValue, oldValue) => {
 </script>
 
 <template>
-  <nav class="relative bg-transparent">
+  <nav class="relative transition-all duration-300" :class="{ 'nav-scrolled lg:bg-white lg:shadow': isScrolled }">
     <div class="px-4 mx-auto bg-white lg:bg-transparent">
-      <!-- <div class="px-4 mx-auto"> -->
       <div class="flex items-center justify-between h-16">
         <!-- Logo -->
         <div class="flex-shrink-0">
-          <img src="../assets/img/logo.svg" alt="Logo" class="h-8" />
+          <img :src="Images.LogoImage" alt="Logo" class="h-8" />
         </div>
 
         <!-- Desktop Navigation -->
@@ -194,7 +204,7 @@ watch(() => activeDropdown.value, (newValue, oldValue) => {
 
 <style scoped>
 * {
-  font-family: Poppins, "sans-serif";
+  font-family: var(--secondary-font);
 }
 
 .home-nav-link.active {

@@ -56,7 +56,7 @@ const options = [
 <template>
   <div class="relative px-2 py-16">
     <img
-      src="../assets/img/feature-shape.svg"
+      :src="Images.FeatureShapeImage"
       alt="image"
       class="absolute left-0 top-0 -z-[1] -translate-y-1/2"
     />
@@ -71,7 +71,7 @@ const options = [
           </h2>
         </div>
         <div class="lg:max-w-md">
-          <p class="text-[#888] desc md:text-center lg:text-start">
+          <p class="text-[#888888] desc md:text-center lg:text-start">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
             egestas Werat viverra id et aliquet. vulputate egestas sollicitudin.
           </p>
@@ -95,7 +95,7 @@ const options = [
             {{ item.label }}
           </h3>
           <p
-            class="mt-4 mb-4 text-[#888] text-[.875rem] leading-[1.25rem] desc"
+            class="mt-4 mb-4 text-[#888888] text-[.875rem] leading-[1.25rem] desc"
           >
             {{ item.description }}
           </p>
@@ -108,10 +108,10 @@ const options = [
 
 <style>
 .heading {
-  font-family: Merriweather !important;
-  color: #222222;
+  font-family: var(--primary-font) !important;
+  color: var(--primary-color);
 }
 .desc {
-  font-family: Poppins, "sans-serif";
+  font-family: var(--secondary-font);
 }
 </style>

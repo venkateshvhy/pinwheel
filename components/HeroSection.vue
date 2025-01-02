@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script  setup lang="ts">
 import PWButton from '~/common/PW-Button.vue';
 
 const title = "Helping teams in the world with focus";
@@ -52,7 +52,7 @@ const description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mo
 
 .download-btn {
   background: white;
-  color: #333;
+  color: #333333;
   font-size: 1.125rem;
   font-weight: 500;
   padding: 1rem 2rem;

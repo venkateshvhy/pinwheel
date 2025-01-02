@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+    --primary-font: Merriweather, sans-serif;
+    --secondary-font: Poppins, sans-serif;
+    --primary-color: #222222;
+    --secondary-color: #888888
+}

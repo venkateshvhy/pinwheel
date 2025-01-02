@@ -1,12 +1,8 @@
-<script lang="ts" setup>
+<script  setup lang="ts">
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
-
-import Henry from '../assets/img/henry.png';
-import Richards from '../assets/img/richards.png';
-import Cooper from '../assets/img/cooper.png';
 
 const testimonials = [
   {
@@ -14,7 +10,7 @@ const testimonials = [
     company: "Microsoft Corp",
     description:
       "Our platform helps build secure onboarding authentication experiences & engage your users. We build.",
-    image: Henry,
+    image: Images.HenryImage,
     rating: 4,
   },
   {
@@ -22,7 +18,7 @@ const testimonials = [
     company: "Meta Limited",
     description:
       "Our platform helps build secure onboarding authentication experiences & engage your users. We build.",
-    image: Richards,
+    image: Images.RichardImage,
     rating: 5,
   },
   {
@@ -30,7 +26,7 @@ const testimonials = [
     company: "Apple Inc Ltd",
     description:
       "Our platform helps build secure onboarding authentication experiences & engage your users. We build.",
-    image: Cooper,
+    image: Images.CooperImage,
     rating: 4,
   },
   {
@@ -38,7 +34,7 @@ const testimonials = [
     company: "Microsoft Corp",
     description:
       "Our platform helps build secure onboarding authentication experiences & engage your users. We build.",
-    image: Henry,
+    image: Images.HenryImage,
     rating: 4,
   },
   {
@@ -46,7 +42,7 @@ const testimonials = [
     company: "Meta Limited",
     description:
       "Our platform helps build secure onboarding authentication experiences & engage your users. We build.",
-    image: Richards,
+    image: Images.RichardImage,
     rating: 5,
   },
   {
@@ -54,7 +50,7 @@ const testimonials = [
     company: "Apple Inc Ltd",
     description:
       "Our platform helps build secure onboarding authentication experiences & engage your users. We build.",
-    image: Cooper,
+    image: Images.CooperImage,
     rating: 4,
   },
 ];
@@ -125,13 +121,14 @@ const swiperModules = [Pagination, Autoplay];
 <style scoped>
 .testimonial-card {
   background: #ffffff;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+  /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); */
+  border-radius: 0.75rem;
   padding: 20px;
   margin: 10px;
   width: 300px;
   -webkit-box-shadow: 0px 10px 45px rgba(0, 0, 0, 0.05);
-  box-shadow: 0px 10px 45px rgba(0, 0, 0, 0.05);
+  /* box-shadow: 0px 10px 45px rgba(0, 0, 0, 0.05); */
+  box-shadow: 0px 0px 20px 20px rgba(0, 0, 0, 0.05);
 }
 
 .profile-img {
@@ -143,21 +140,23 @@ const swiperModules = [Pagination, Autoplay];
 }
 
 .name {
-  font-size: 18px;
+  font-size: 1.5rem;
   font-weight: bold;
   margin: 5px 0;
+  font-family: var(--primary-font);
 }
 
 .company {
-  font-size: 14px;
-  color: #6c757d;
+  font-size: 1rem;
+  color: var(--secondary-color);
   margin-bottom: 10px;
 }
 
 .description {
-  font-size: 14px;
-  color: #6c757d;
+  font-size: 1rem;
+  color: #888888;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 .stars {
@@ -167,9 +166,11 @@ const swiperModules = [Pagination, Autoplay];
 }
 
 .star {
-  font-size: 20px;
-  color: #ccc;
+  font-size: 50px;
+  color: #cccccc;
   margin: 0 2px;
+  max-width: 100%;
+  height: auto;
 }
 
 .filled-star {
@@ -209,7 +210,7 @@ const swiperModules = [Pagination, Autoplay];
 :deep(.swiper-pagination-bullet) {
   width: 10px;
   height: 10px;
-  background: #ccc;
+  background: #cccccc;
   border-radius: 50%;
   margin: 0 5px;
   cursor: pointer;

@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script  setup lang="ts">
 import { ref } from "vue";
 
 // Reactive variable to track the selected highlight
@@ -69,7 +69,7 @@ const handleHighlightClick = (highlight: string) => {
       <div class="visualization">
         <div class="map-section">
           <img
-            src="../assets/img/worldmap.png"
+            :src="Images.WorldMapImage"
             alt="Sales by Country"
             class="object-contain w-full"
           />
@@ -82,11 +82,11 @@ const handleHighlightClick = (highlight: string) => {
       <!-- Left Section: Cards -->
       <div class="relative">
         <img
-          src="../assets/img/collaborator.png"
+          :src="Images.CollaboratorImage"
           alt="Add Collaborators"
           class="object-contain w-full"
         />
-        <img src="../assets/img/collaborator-shap.svg" alt="" class="absolute bottom-6 left-1/2 -z-[1] -translate-x-1/2">
+        <img :src="Images.CollaboratorShapeImage" alt="image" class="absolute bottom-6 left-1/2 -z-[1] -translate-x-1/2">
       </div>
 
       <!-- Right Section: Text Content -->
@@ -107,7 +107,7 @@ const handleHighlightClick = (highlight: string) => {
             >
               <Icon
                 name="heroicons:check-20-solid"
-                style="color: #ffff"
+                style="color: #ffffff"
                 size="16"
               />
             </div>
@@ -120,7 +120,7 @@ const handleHighlightClick = (highlight: string) => {
             >
               <Icon
                 name="heroicons:check-20-solid"
-                style="color: #ffff"
+                style="color: #ffffff"
                 size="16"
               />
             </div>
@@ -133,7 +133,7 @@ const handleHighlightClick = (highlight: string) => {
             >
               <Icon
                 name="heroicons:check-20-solid"
-                style="color: #ffff"
+                style="color: #ffffff"
                 size="16"
               />
             </div>
@@ -166,7 +166,7 @@ const handleHighlightClick = (highlight: string) => {
 
 .text-line {
   font-size: 1rem;
-  color: #222222;
+  color: var(--primary-color);
   opacity: 1;
 }
 

@@ -23,7 +23,7 @@ const playVideo = () => {
           >
             Accountability that works for you
           </h1>
-          <p class="text-[#888] desc">
+          <p class="text-[#888888] desc">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
             egestas Werat viverra id et aliquet. vulputate egestas sollicitudin.
           </p>
@@ -44,7 +44,7 @@ const playVideo = () => {
           </div>
           <div v-else  class="relative overflow-hidden rounded-2xl">
             <img
-              src="../assets/img/intro-thumbnail.png"
+              :src="Images.IntroThumbnailImage"
               alt="Video thumbnail"
               class="object-cover w-full h-full"
             />
@@ -68,7 +68,7 @@ const playVideo = () => {
               </div>
             </button>
           </div>
-            <img v-if="!isVideoPlaying" src="../assets/img/collaborator-shap.svg" alt="" class="absolute -z-10 -right-[-1.8rem] -bottom-[-1.4rem]" style="right: -1.8rem; bottom: -1.4rem;">
+            <img v-if="!isVideoPlaying" :src="Images.CollaboratorShapeImage" alt="image" class="absolute -z-10 -right-[-1.8rem] -bottom-[-1.4rem]" style="right: -1.8rem; bottom: -1.4rem;">
           
         </div>
       </div>
@@ -78,7 +78,7 @@ const playVideo = () => {
         <h2 class="font-bold text-[1.92rem] md:text-[2.4rem] leading-tight heading">
           Our customers have nice things to say about us
         </h2>
-        <p class="text-[#888] desc">
+        <p class="text-[#888888] desc">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi egestas
           Werat viverra id et aliquet. vulputate egestas sollicitudin.
         </p>
