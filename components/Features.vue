@@ -62,7 +62,7 @@ const options = [
     />
     <div class="mx-auto max-w-7xl">
       <!-- Heading Section -->
-      <div class="mb-12 lg:flex lg:justify-between lg:items-start">
+      <div class="mb-12 text-center lg:flex lg:justify-between lg:items-start">
         <div>
           <h2
             class="mb-4 text-[1.9rem] font-bold md:text-[2.4rem] heading leading-1 md:text-center lg:text-start"
@@ -71,7 +71,7 @@ const options = [
           </h2>
         </div>
         <div class="lg:max-w-md">
-          <p class="text-[#888888] desc md:text-center lg:text-start">
+          <p class="text-[var(--secondary-color)] desc md:text-center lg:text-start">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
             egestas Werat viverra id et aliquet. vulputate egestas sollicitudin.
           </p>
@@ -79,9 +79,9 @@ const options = [
       </div>
 
       <!-- Cards Section -->
-      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="grid grid-cols-2 gap-6 md:grid-cols-3 xl:grid-cols-4">
         <div
-          class="flex flex-col items-start p-6 bg-white border rounded-lg shadow-md"
+          class="flex flex-col items-start p-6 bg-white border rounded-lg shadow-md hover:translate-y-[-10px] transition-all"
           style="
             box-shadow: 0px 15px 34px rgba(0, 0, 0, 0.1);
             -webkit-box-shadow: 0px 15px 34px rgba(0, 0, 0, 0.1);
@@ -95,7 +95,7 @@ const options = [
             {{ item.label }}
           </h3>
           <p
-            class="mt-4 mb-4 text-[#888888] text-[.875rem] leading-[1.25rem] desc"
+            class="mt-4 mb-4 text-[var(--secondary-color)] text-[.875rem] leading-[1.25rem] desc"
           >
             {{ item.description }}
           </p>

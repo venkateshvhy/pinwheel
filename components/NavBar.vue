@@ -76,7 +76,7 @@ watch(() => activeDropdown.value, (newValue, oldValue) => {
 <template>
   <nav class="relative transition-all duration-300" :class="{ 'nav-scrolled lg:bg-white lg:shadow': isScrolled }">
     <div class="px-4 mx-auto bg-white lg:bg-transparent">
-      <div class="flex items-center justify-between h-16">
+      <div class="flex items-center justify-between h-16 lg:justify-evenly">
         <!-- Logo -->
         <div class="flex-shrink-0">
           <img :src="Images.LogoImage" alt="Logo" class="h-8" />

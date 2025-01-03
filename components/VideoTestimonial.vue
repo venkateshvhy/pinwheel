@@ -15,7 +15,7 @@ const playVideo = () => {
   <div class="relative">
     <!-- Main section -->
     <section class="container py-16 mx-auto">
-        <div class="grid items-center px-8 pr-9 md:flex md:flex-col-reverse lg:grid lg:grid-cols-2">
+        <div class="grid items-center gap-4 px-8 pr-9 md:flex md:flex-col-reverse lg:grid lg:grid-cols-2">
         <!-- Left content -->
         <div class="space-y-6">
           <h1
@@ -23,7 +23,7 @@ const playVideo = () => {
           >
             Accountability that works for you
           </h1>
-          <p class="text-[#888888] desc">
+          <p class="text-[var(--secondary-color)] desc">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
             egestas Werat viverra id et aliquet. vulputate egestas sollicitudin.
           </p>
@@ -74,11 +74,11 @@ const playVideo = () => {
       </div>
 
       <!-- Testimonial section -->
-      <div class="flex justify-between mx-8 space-y-4 md:flex-col lg:flex-row">
+      <div class="flex flex-col justify-between mx-8 mt-5 space-y-4 lg:flex-row lg:mt-0">
         <h2 class="font-bold text-[1.92rem] md:text-[2.4rem] leading-tight heading">
           Our customers have nice things to say about us
         </h2>
-        <p class="text-[#888888] desc">
+        <p class="text-[var(--secondary-color)] desc">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi egestas
           Werat viverra id et aliquet. vulputate egestas sollicitudin.
         </p>

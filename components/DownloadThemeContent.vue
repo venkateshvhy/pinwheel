@@ -14,7 +14,7 @@ import PWButton from "~/common/PW-Button.vue";
           >
             Scale design & dev operations with Avocode Enterprise
           </h1>
-          <p class="text-lg text-[#666666]">
+          <p class="text-[1rem] text-[#666666]">
             A fully integrated suite of authentication & authoriz products,
             Stytch's platform removes the headache of.
           </p>

@@ -107,7 +107,7 @@ const handleHighlightClick = (highlight: string) => {
             >
               <Icon
                 name="heroicons:check-20-solid"
-                style="color: #ffffff"
+                style="color: var(--white-color)"
                 size="16"
               />
             </div>
@@ -120,7 +120,7 @@ const handleHighlightClick = (highlight: string) => {
             >
               <Icon
                 name="heroicons:check-20-solid"
-                style="color: #ffffff"
+                style="color: var(--white-color)"
                 size="16"
               />
             </div>
@@ -133,7 +133,7 @@ const handleHighlightClick = (highlight: string) => {
             >
               <Icon
                 name="heroicons:check-20-solid"
-                style="color: #ffffff"
+                style="color: var(--white-color)"
                 size="16"
               />
             </div>
