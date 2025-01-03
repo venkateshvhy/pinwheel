@@ -46,11 +46,14 @@ const handleMouseEnter = (value: string) => {
 
 const handleMouseLeave = (isMobile: boolean = false) => {
   isHoveringDropdown.value = false;
-  closeTimeoutRef.value = window.setTimeout(() => {
-    if (!isHoveringDropdown.value) {
-      activeDropdown.value = null;
-    }
-  }, isMobile ? 300 : 100);
+  closeTimeoutRef.value = window.setTimeout(
+    () => {
+      if (!isHoveringDropdown.value) {
+        activeDropdown.value = null;
+      }
+    },
+    isMobile ? 300 : 100
+  );
 };
 
 const handleScroll = () => {
@@ -58,32 +61,42 @@ const handleScroll = () => {
 };
 
 onMounted(() => {
-  window.addEventListener('scroll', handleScroll);
+  window.addEventListener("scroll", handleScroll);
 });
 
 onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll);
+  window.removeEventListener("scroll", handleScroll);
 });
 
-watch(() => activeDropdown.value, (newValue, oldValue) => {
-  if (!newValue && closeTimeoutRef.value) {
-    clearTimeout(closeTimeoutRef.value);
-    closeTimeoutRef.value = null;
+watch(
+  () => activeDropdown.value,
+  (newValue, oldValue) => {
+    if (!newValue && closeTimeoutRef.value) {
+      clearTimeout(closeTimeoutRef.value);
+      closeTimeoutRef.value = null;
+    }
   }
-});
+);
 </script>
 
 <template>
-  <nav class="relative transition-all duration-300" :class="{ 'nav-scrolled lg:bg-white lg:shadow': isScrolled }">
-    <div class="px-4 mx-auto bg-white lg:bg-transparent">
-      <div class="flex items-center justify-between h-16 lg:justify-evenly">
+  <nav
+    class="relative mx-auto transition-all duration-300"
+    :class="{ 'nav-scrolled lg:bg-white lg:shadow-lg': isScrolled }"
+  >
+    <div class="flex justify-center py-2 bg-white lg:py-6 lg:bg-transparent ">
+      <!-- <div class="flex items-center justify-between w-full px-3 2xl:container xl:mx-8"> -->
+      <div class="container w-full mx-auto">
+      <div
+        class="flex items-center justify-between mx-0 xl:-mx-5"
+      >
         <!-- Logo -->
         <div class="flex-shrink-0">
           <img :src="Images.LogoImage" alt="Logo" class="h-8" />
         </div>
 
         <!-- Desktop Navigation -->
-        <div class="hidden lg:flex md:items-center md:space-x-8">
+        <div class="justify-center hidden lg:flex md:items-center md:space-x-8">
           <div
             v-for="item in navItems"
             :key="item.value"
@@ -144,6 +157,7 @@ watch(() => activeDropdown.value, (newValue, oldValue) => {
           </button>
         </div>
       </div>
+      </div>
     </div>
 
     <!-- Mobile menu -->
@@ -203,8 +217,31 @@ watch(() => activeDropdown.value, (newValue, oldValue) => {
 </template>
 
 <style scoped>
+.container {
+}
 * {
   font-family: var(--secondary-font);
+}
+
+.nav-container {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.home-nav-link {
+  font-size: 17px;
+  font-family: var(--secondary-font);
+  color: var(--primary-color);
 }
 
 .home-nav-link.active {

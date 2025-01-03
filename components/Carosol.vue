@@ -159,7 +159,7 @@ const swiperModules = [Pagination, Autoplay];
 
 .company {
   font-size: 1.125rem;
-  color: #666666;
+  color: var(--brown-color);
   margin-bottom: 1.5rem;
   text-transform: lowercase;
   text-align: center;
@@ -168,7 +168,7 @@ const swiperModules = [Pagination, Autoplay];
 .description {
   font-size: 1rem;
   line-height: 1.6;
-  color: #666666;
+  color: var(--brown-color);
   margin-bottom: 1.5rem;
   text-align: center;
   flex-grow: 1;
