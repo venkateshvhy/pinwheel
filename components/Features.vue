@@ -54,7 +54,7 @@ const options = [
 </script>
 
 <template>
-  <div class="relative px-2 py-16">
+  <div class="relative px-6 py-16 lg:px-2">
     <img
       :src="Images.FeatureShapeImage"
       alt="image"
@@ -89,7 +89,7 @@ const options = [
           v-for="item in options"
         >
           <h3
-            class="text-xl h4 heading text-[1.25rem] font-bold"
+          class="text-xl font-bold h4 lg:text-2xl heading"
             style="line-height: 1.75rem"
           >
             {{ item.label }}

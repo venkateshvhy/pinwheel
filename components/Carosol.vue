@@ -150,16 +150,18 @@ const swiperModules = [Pagination, Autoplay];
 }
 
 .name {
-  font-size: 1.75rem;
-  font-weight: 600;
+  font-size: 1.55rem;
+  font-family: var(--primary-font);
+  font-weight: 700;
   margin-bottom: 0.5rem;
-  color: #1A1A1A;
+  color: var(--primary-color);
   text-align: center;
 }
 
 .company {
-  font-size: 1.125rem;
+  font-size: 1rem;
   color: var(--brown-color);
+  font-family: var(--secondary-font);
   margin-bottom: 1.5rem;
   text-transform: lowercase;
   text-align: center;
@@ -168,7 +170,7 @@ const swiperModules = [Pagination, Autoplay];
 .description {
   font-size: 1rem;
   line-height: 1.6;
-  color: var(--brown-color);
+  color: var(--secondary-color);
   margin-bottom: 1.5rem;
   text-align: center;
   flex-grow: 1;

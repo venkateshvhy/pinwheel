@@ -176,7 +176,7 @@ const handleHighlightClick = (highlight: string) => {
 }
 
 .description {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: #6b7280;
   margin-bottom: 2rem;
 }

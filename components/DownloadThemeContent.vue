@@ -4,7 +4,7 @@ import PWButton from "~/common/PW-Button.vue";
 <template>
   <div class="relative">
     <!-- Main content -->
-    <div class="container w-full px-4 py-12 mx-auto">
+    <div class="container w-full px-8 py-12 mx-auto lg:px-4">
       <div class="grid items-center gap-12 mx-0 xl:-mx-6 md:grid-cols-1 lg:grid-cols-2">
         <!-- Left content -->
         <div class="max-w-xl space-y-6">

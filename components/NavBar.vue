@@ -88,7 +88,7 @@ watch(
       <!-- <div class="flex items-center justify-between w-full px-3 2xl:container xl:mx-8"> -->
       <div class="container w-full mx-auto">
       <div
-        class="flex items-center justify-between mx-0 xl:-mx-5"
+        class="flex items-center justify-between px-4 mx-0 lg:px-0 xl:-mx-5"
       >
         <!-- Logo -->
         <div class="flex-shrink-0">
@@ -239,7 +239,7 @@ watch(
 }
 
 .home-nav-link {
-  font-size: 17px;
+  font-size: 15px;
   font-family: var(--secondary-font);
   color: var(--primary-color);
 }

@@ -4,7 +4,7 @@ defineProps({
 });
 </script>
 <template>
-  <div>
+  <div class="flex">
     <p class="px-8 py-2.5 font-semibold bg-white rounded-full text-[.875rem] button-style">{{ label }}</p>
   </div>
 </template>

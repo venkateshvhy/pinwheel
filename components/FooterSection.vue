@@ -25,16 +25,16 @@ const quickLinks = ref([
           <div class="flex items-center space-x-2">
             <img :src="Images.LogoImage" alt="Pinwheel" class="h-auto max-w-full" />
           </div>
-          <p class="text-[var(--secondary-color)] desc">
+          <p class="text-[var(--secondary-color)] desc text-[14px]">
             Lorem ipsum dolor sit sed dmi amet, consectetur adipiscing. Cdo tellus, sed condimentum volutpat.
           </p>
         </div>
 
         <!-- Socials -->
         <div class="space-y-6">
-          <h3 class="text-xl font-semibold text-[#222222] desc">Socials</h3>
+          <h3 class="text-[1rem] font-semibold text-[var(--primary-color)] desc">Socials</h3>
           <div class="space-y-4">
-            <p class="text-[var(--secondary-color)] desc">themefisher@gmail.com</p>
+            <p class="text-[var(--secondary-color)] desc text-[14px]">themefisher@gmail.com</p>
             <div class="flex space-x-4">
               <a 
                 v-for="(link, index) in socialLinks" 
@@ -42,7 +42,7 @@ const quickLinks = ref([
                 :href="link.url"
                 class="flex items-center justify-center w-10 h-10 transition-all bg-white hover:bg-[#fe6019] rounded-full shadow-sm hover:shadow-md"
               >
-                <Icon :name="link.icon" class="text-xl text-gray-600 hover:text-[var(--white-color)]"></Icon>
+                <Icon :name="link.icon" class="text-[14px] text-gray-600 hover:text-[var(--white-color)]"></Icon>
               </a>
             </div>
           </div>
@@ -50,10 +50,10 @@ const quickLinks = ref([
 
         <!-- Quick Links -->
         <div class="space-y-6">
-          <h3 class="text-xl font-semibold text-[#222222] desc">Quick Links</h3>
+          <h3 class="text-[1rem] font-semibold text-[var(--primary-color)] desc">Quick Links</h3>
           <ul class="space-y-4">
             <li v-for="(link, index) in quickLinks" :key="index">
-              <a :href="link.url" class="text-[var(--secondary-color)] desc hover:text-[#fe6019] hover:underline">
+              <a :href="link.url" class="text-[var(--secondary-color)] desc text-[14px] hover:text-[#fe6019] hover:underline">
                 {{ link.name }}
               </a>
             </li>
@@ -62,18 +62,18 @@ const quickLinks = ref([
 
         <!-- Location & Contact -->
         <div class="space-y-6">
-          <h3 class="text-xl font-semibold text-[#222222] desc">Location & Contact</h3>
+          <h3 class="text-[1rem] font-semibold text-[var(--primary-color)] desc">Location & Contact</h3>
           <div class="space-y-4">
-            <p class="text-[var(--secondary-color)] desc">
+            <p class="text-[var(--secondary-color)] desc text-[14px]">
               2118 Thornridge Cir. Syracuse, Connecticut 35624
             </p>
-            <p class="text-[var(--secondary-color)] desc">(704) 555-0127</p>
+            <p class="text-[var(--secondary-color)] desc text-[14px]">(704) 555-0127</p>
           </div>
         </div>
       </div>
 
       <!-- Copyright -->
-      <div class="mt-16 text-center text-[var(--secondary-color)] desc">
+      <div class="mt-16 text-center text-[var(--secondary-color)] desc text-[14px]">
         <p>Designed And Developed by Themefisher | Distributed by ThemeWagon</p>
       </div>
     </div>

@@ -44,10 +44,11 @@ const description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mo
 }
 
 .description {
-  font-size: 1.25rem;
+  font-size: 1rem;
   color: rgba(255, 255, 255, 0.9);
   line-height: 1.6;
   margin-bottom: 2rem;
+  font-family: var(--secondary-font);
 }
 
 .download-btn {
