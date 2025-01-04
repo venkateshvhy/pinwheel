@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, watch, onMounted, onUnmounted } from "vue";
+import PWButton from "~/common/PW-Button.vue";
 
 const isMobileMenuOpen = ref(false);
 const activeDropdown = ref<string | null>(null);
 const isHoveringDropdown = ref(false);
+const closeTimeoutRef = ref<number | null>(null);
+const isScrolled = ref(false);
 
 const navItems = [
   { label: "Home", value: "Home" },
@@ -29,50 +32,81 @@ const navItems = [
 
 const toggleMobileMenu = () => {
   isMobileMenuOpen.value = !isMobileMenuOpen.value;
-  // Close any open dropdowns when toggling mobile menu
   activeDropdown.value = null;
 };
 
-const toggleDropdown = (value: string) => {
-  activeDropdown.value = activeDropdown.value === value ? null : value;
+const handleMouseEnter = (value: string) => {
+  if (closeTimeoutRef.value) {
+    clearTimeout(closeTimeoutRef.value);
+    closeTimeoutRef.value = null;
+  }
+  activeDropdown.value = value;
+  isHoveringDropdown.value = true;
 };
 
-const handleParentHover = (value: string, isHovering: boolean) => {
-  if (!isMobileMenuOpen.value) {
-    if (isHovering) {
-      activeDropdown.value = value;
-    } else {
-      setTimeout(() => {
-        if (!isHoveringDropdown.value) {
-          activeDropdown.value = null;
-        }
-      }, 100);
+const handleMouseLeave = (isMobile: boolean = false) => {
+  isHoveringDropdown.value = false;
+  closeTimeoutRef.value = window.setTimeout(
+    () => {
+      if (!isHoveringDropdown.value) {
+        activeDropdown.value = null;
+      }
+    },
+    isMobile ? 300 : 100
+  );
+};
+
+const handleScroll = () => {
+  isScrolled.value = window.scrollY > 0;
+};
+
+onMounted(() => {
+  window.addEventListener("scroll", handleScroll);
+});
+
+onUnmounted(() => {
+  window.removeEventListener("scroll", handleScroll);
+});
+
+watch(
+  () => activeDropdown.value,
+  (newValue, oldValue) => {
+    if (!newValue && closeTimeoutRef.value) {
+      clearTimeout(closeTimeoutRef.value);
+      closeTimeoutRef.value = null;
     }
   }
-};
+);
 </script>
 
 <template>
-  <nav class="relative">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="flex justify-between items-center h-16">
+  <nav
+    class="relative mx-auto transition-all duration-300"
+    :class="{ 'nav-scrolled lg:bg-white lg:shadow-lg': isScrolled }"
+  >
+    <div class="flex justify-center py-2 bg-white lg:py-6 lg:bg-transparent ">
+      <!-- <div class="flex items-center justify-between w-full px-3 2xl:container xl:mx-8"> -->
+      <div class="container w-full mx-auto">
+      <div
+        class="flex items-center justify-between px-4 mx-0 lg:px-0 xl:-mx-5"
+      >
         <!-- Logo -->
         <div class="flex-shrink-0">
-          <img src="../assets/img/logo.svg" alt="Logo" class="h-8" />
+          <img :src="Images.LogoImage" alt="Logo" class="h-8" />
         </div>
 
         <!-- Desktop Navigation -->
-        <div class="hidden lg:flex md:items-center md:space-x-8">
+        <div class="justify-center hidden lg:flex md:items-center md:space-x-8">
           <div
             v-for="item in navItems"
             :key="item.value"
             class="relative"
-            @mouseenter="item.dropdown ? handleParentHover(item.value, true) : null"
-            @mouseleave="item.dropdown ? handleParentHover(item.value, false) : null"
+            @mouseenter="item.dropdown ? handleMouseEnter(item.value) : null"
+            @mouseleave="item.dropdown ? handleMouseLeave(false) : null"
           >
             <a
               href="#"
-              class="home-nav-link flex items-center"
+              class="flex items-center home-nav-link"
               :class="{
                 'text-orange-500': activeDropdown === item.value,
                 active: item.label === 'Home',
@@ -88,7 +122,7 @@ const handleParentHover = (value: string, isHovering: boolean) => {
             <div
               v-if="item.dropdown"
               v-show="activeDropdown === item.value"
-              class="absolute bg-white shadow-lg rounded-md py-2 mt-2 w-48"
+              class="absolute z-10 w-48 py-2 mt-2 bg-white rounded-md shadow-lg"
               @mouseenter="isHoveringDropdown = true"
               @mouseleave="isHoveringDropdown = false"
             >
@@ -106,37 +140,37 @@ const handleParentHover = (value: string, isHovering: boolean) => {
 
         <!-- Sign Up Button (Desktop) -->
         <div class="hidden lg:block">
-          <div class="bg-white px-4 py-2 rounded-full shadow-lg">
-            <p class="text-black">Sign Up Now</p>
-          </div>
+          <PWButton label="Sign Up Now" />
         </div>
 
         <!-- Mobile menu button -->
         <div class="lg:hidden">
           <button
             @click="toggleMobileMenu"
-            class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-orange-500"
+            class="inline-flex items-center justify-center p-2 text-gray-700 rounded-md hover:text-orange-500"
           >
             <span class="sr-only">Open main menu</span>
             <Icon
               :name="isMobileMenuOpen ? 'heroicons:x-mark' : 'heroicons:bars-3'"
-              class="h-6 w-6"
+              class="w-6 h-6"
             />
           </button>
         </div>
+      </div>
       </div>
     </div>
 
     <!-- Mobile menu -->
     <div
       v-show="isMobileMenuOpen"
-      class="lg:hidden absolute top-16 left-0 w-full shadow-lg"
+      class="relative left-0 right-0 flex flex-col w-full bg-white lg:hidden"
     >
-      <div class="px-2 pt-2 pb-3 space-y-1 flex flex-col items-center">
-        <div v-for="item in navItems" :key="item.value" class="relative">
+      <div class="flex flex-col items-center px-2 pb-3 space-y-1">
+        <div v-for="item in navItems" :key="item.value" class="relative w-full">
           <button
-            @click="item.dropdown ? toggleDropdown(item.value) : null"
-            class="w-full text-left px-3 py-2 home-nav-link flex items-center justify-between"
+            @mouseenter="item.dropdown ? handleMouseEnter(item.value) : null"
+            @mouseleave="item.dropdown ? handleMouseLeave(true) : null"
+            class="flex items-center justify-center w-full px-3 py-2 text-left home-nav-link"
             :class="{
               'text-orange-500': activeDropdown === item.value,
               active: item.label === 'Home',
@@ -158,13 +192,15 @@ const handleParentHover = (value: string, isHovering: boolean) => {
           <div
             v-if="item.dropdown"
             v-show="activeDropdown === item.value"
-            class="bg-gray-50 py-2"
+            class="flex flex-col justify-center w-full py-2 bg-[#fe60190d]"
+            @mouseenter="isHoveringDropdown = true"
+            @mouseleave="isHoveringDropdown = false"
           >
             <a
               v-for="dropdownItem in item.dropdown"
               :key="dropdownItem.label"
               :href="dropdownItem.link"
-              class="block px-4 py-2 text-gray-700 home-nav-link pl-6"
+              class="block px-4 py-2 pl-6 text-center text-gray-700 home-nav-link"
             >
               {{ dropdownItem.label }}
             </a>
@@ -173,20 +209,43 @@ const handleParentHover = (value: string, isHovering: boolean) => {
       </div>
 
       <!-- Sign Up Button (Mobile) -->
-      <div class="px-4 py-3">
-        <div
-          class="bg-black px-4 py-2 flex justify-center items-center rounded-full"
-        >
-          <p class="text-white">Sign Up Now</p>
-        </div>
+      <div class="self-center px-4 py-3">
+        <PWButton label="Sign Up Now" />
       </div>
     </div>
   </nav>
 </template>
 
 <style scoped>
+.container {
+}
 * {
-  font-family: Poppins, "sans-serif";
+  font-family: var(--secondary-font);
+}
+
+.nav-container {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.home-nav-link {
+  font-size: 15px;
+  font-family: var(--secondary-font);
+  color: var(--primary-color);
+}
+
+.home-nav-link.active {
+  position: relative;
 }
 
 .home-nav-link.active::after {
@@ -197,6 +256,7 @@ const handleParentHover = (value: string, isHovering: boolean) => {
   height: 0.125rem;
   --tw-content: "";
   content: var(--tw-content);
+  display: block;
   background-image: linear-gradient(184.78deg, #fa709a 7.64%, #fee140 120.07%);
 }
 
@@ -207,11 +267,5 @@ const handleParentHover = (value: string, isHovering: boolean) => {
 
 .home-nav-link:hover {
   color: #fe6019;
-}
-
-@media (max-width: 768px) {
-  .home-nav-link.active::after {
-    display: none;
-  }
 }
 </style>
