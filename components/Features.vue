@@ -54,24 +54,24 @@ const options = [
 </script>
 
 <template>
-  <div class="relative px-6 py-16 lg:px-2">
+  <div class="relative py-16">
     <img
       :src="Images.FeatureShapeImage"
       alt="image"
       class="absolute left-0 top-0 -z-[1] -translate-y-1/2"
     />
-    <div class="mx-auto max-w-7xl">
+    <div class="container">
       <!-- Heading Section -->
-      <div class="mb-12 text-center lg:flex lg:justify-between lg:items-start">
-        <div>
+      <div class="flex flex-col justify-between lg:flex-row">
+        <div class="lg:basis-2/5">
           <h2
-            class="mb-4 text-[1.9rem] font-bold md:text-[2.4rem] heading leading-1 md:text-center lg:text-start"
+            class="text-[1.9rem] font-bold md:text-[2.4rem] heading text-center lg:text-start leading-tight"
           >
             The Highlighting Part Of Our Solution
           </h2>
         </div>
-        <div class="lg:max-w-md">
-          <p class="text-[var(--secondary-color)] desc md:text-center lg:text-start">
+        <div class="lg:basis-2/5">
+          <p class="text-[var(--secondary-color)] desc text-center lg:text-start">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
             egestas Werat viverra id et aliquet. vulputate egestas sollicitudin.
           </p>
@@ -79,9 +79,9 @@ const options = [
       </div>
 
       <!-- Cards Section -->
-        <div class="grid grid-cols-2 gap-6 md:grid-cols-3 xl:grid-cols-4">
+        <div class="grid grid-cols-2 gap-6 mt-10 md:grid-cols-3 xl:grid-cols-4">
         <div
-          class="flex flex-col items-start p-6 bg-white border rounded-lg shadow-md hover:translate-y-[-10px] transition-all"
+          class="flex flex-col items-start p-5 bg-white border rounded-lg shadow-md hover:translate-y-[-10px] transition-all"
           style="
             box-shadow: 0px 15px 34px rgba(0, 0, 0, 0.1);
             -webkit-box-shadow: 0px 15px 34px rgba(0, 0, 0, 0.1);

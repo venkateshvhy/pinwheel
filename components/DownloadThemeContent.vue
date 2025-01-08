@@ -2,29 +2,29 @@
 import PWButton from "~/common/PW-Button.vue";
 </script>
 <template>
-  <div class="relative">
+  <section class="relative py-16 banner">
     <!-- Main content -->
-    <div class="container w-full px-8 py-12 mx-auto lg:px-4">
-      <div class="grid items-center gap-12 mx-0 xl:-mx-6 md:grid-cols-1 lg:grid-cols-2">
+    <div class="container">
+      <div class="flex flex-col flex-wrap items-center lg:flex-row">
         <!-- Left content -->
-        <div class="max-w-xl space-y-6">
+        <div class="basis-1/2">
           <h1
-            class="text-[2.3rem] font-bold text-[var(--primary-color)] leading-tight lg:text-[3rem]"
+            class="text-[2.3rem] font-bold text-[var(--primary-color)] leading-tight md:text-[3rem]"
             style="font-family: var(--primary-font); --tw-text-opacity: 1;"
           >
             Scale design & dev operations with Avocode Enterprise
           </h1>
-          <p class="text-[1rem] text-[var(--brown-color)]">
+          <p class="text-[1rem] text-[var(--brown-color)] mt-6">
             A fully integrated suite of authentication & authoriz products,
             Stytch's platform removes the headache of.
           </p>
-          <div class="flex">
+          <div class="flex mt-8">
             <PWButton label="Download The Theme" />
           </div>
         </div>
 
         <!-- Right content - Stats Card -->
-        <div class="flex">
+        <div class="basis-1/2">
           <img
             :src="Images.NetIncomeImage"
             alt="Income chart"
@@ -38,9 +38,10 @@ import PWButton from "~/common/PW-Button.vue";
     <img
       :src="Images.BannerImage"
       alt="banner"
-      class="banner-shape absolute -top-[8rem] right-0 -z-[1] w-full max-w-[30%]"
+      class="banner-shape absolute -top-[6rem]  right-0 -z-[1] w-full max-w-[30%]"
     />
-  </div>
+    <!-- -top-[8rem] -->
+  </section>
 </template>
 
 <style scoped>
@@ -60,5 +61,10 @@ select {
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.text-container {
+    margin-left: auto;
+    margin-right: auto;
 }
 </style>

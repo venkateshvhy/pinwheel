@@ -14,10 +14,10 @@ const playVideo = () => {
 <template>
   <div class="relative">
     <!-- Main section -->
-    <section class="container py-16 mx-auto">
-        <div class="grid items-center gap-4 px-8 pr-9 md:flex md:flex-col-reverse lg:grid lg:grid-cols-2">
+    <section class="container py-4 mx-auto">
+        <div class="flex flex-col items-center pb-16 md:flex-col-reverse md:pt-8 lg:px-8 lg:flex-row lg:justify-between lg:gap-40">
         <!-- Left content -->
-        <div class="space-y-6">
+        <div class="space-y-6 basis-5/12">
           <h1
             class="text-[1.92rem] md:text-[2.4rem] font-bold leading-tight heading"
           >
@@ -31,7 +31,7 @@ const playVideo = () => {
         </div>
 
         <!-- Right content - Video section -->
-        <div class="relative w-full group md:mb-8">
+        <div class="relative w-full group md:mb-8 basis-7/12">
             <div v-if="isVideoPlaying" class="relative overflow-hidden rounded-2xl h-[25rem] w-full">
             <iframe
             src="https://www.youtube.com/embed/g3-VxLQO7do?autoplay=1&controls=1"
@@ -74,11 +74,11 @@ const playVideo = () => {
       </div>
 
       <!-- Testimonial section -->
-      <div class="flex flex-col justify-between mx-8 mt-5 space-y-4 lg:flex-row lg:mt-0">
-        <h2 class="font-bold text-[1.92rem] md:text-[2.4rem] leading-tight heading">
+      <div class="flex flex-col justify-between mt-5 mb-10 space-y-4 lg:flex-row lg:mt-0">
+        <h2 class="font-bold text-[1.92rem] md:text-[2.4rem] leading-tight heading basis-6/12">
           Our customers have nice things to say about us
         </h2>
-        <p class="text-[var(--secondary-color)] desc">
+        <p class="text-[var(--secondary-color)] desc basis-4/12 !mt-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi egestas
           Werat viverra id et aliquet. vulputate egestas sollicitudin.
         </p>
@@ -88,10 +88,6 @@ const playVideo = () => {
 </template>
 
 <style scoped>
-.container {
-  /* max-width: 1280px; */
-}
-
 @keyframes ping {
   75%,
   100% {

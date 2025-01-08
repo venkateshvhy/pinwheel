@@ -11,12 +11,13 @@ const handleHighlightClick = (highlight: string) => {
 </script>
 
 <template>
-  <div class="flex flex-col highlight-section">
-    <div class="flex flex-col-reverse lg:flex-row lg:px-8">
-    <!-- <div class="flex flex-row justify-between md:flex-col-reverse lg:px-8"> -->
+  <section class="pt-16">
+  <div class="container">
+    <div class="flex flex-col-reverse items-center lg:flex-row">
       <!-- Left Section: Text Content -->
-      <div class="text-content">
-        <h1 class="leading-10 title heading text-[1.92rem] md:text-[2.4rem]">
+      <div class="basis-5/12">
+      <div class="text-container">
+        <h1 class="leading-10 title heading text-[1.92rem] md:text-[2.3rem]">
           Prevent failure from impacting your reputation
         </h1>
         <p class="description desc">
@@ -64,9 +65,10 @@ const handleHighlightClick = (highlight: string) => {
           </div>
         </div>
       </div>
+      </div>
 
       <!-- Right Section: Visualization -->
-      <div class="visualization">
+      <div class="mx-6 basis-7/12 visualization">
         <div class="map-section">
           <img
             :src="Images.WorldMapImage"
@@ -76,11 +78,9 @@ const handleHighlightClick = (highlight: string) => {
         </div>
       </div>
     </div>
-
-    <div class="flex flex-col lg:flex-row lg:px-8">
-    <!-- <div class="flex justify-between px-6 lg:items-center lg:flex-row md:flex-col"> -->
+    <div class="flex flex-col items-center lg:flex-row">
       <!-- Left Section: Cards -->
-      <div class="relative">
+      <div class="relative basis-7/12">
         <img
           :src="Images.CollaboratorImage"
           alt="Add Collaborators"
@@ -90,7 +90,8 @@ const handleHighlightClick = (highlight: string) => {
       </div>
 
       <!-- Right Section: Text Content -->
-      <div class="max-w-md">
+      <div class="basis-5/12">
+        <div class="text-container">
         <h1 class="mb-4 text-[1.92rem] md:text-[2.4rem] font-bold leading-10 title heading">
           Accept payments any country in this whole universe
         </h1>
@@ -140,9 +141,11 @@ const handleHighlightClick = (highlight: string) => {
             <p class="desc text-line">Customer Service with 79 languages</p>
           </li>
         </ul>
+        </div>
       </div>
     </div>
   </div>
+  </section>
 </template>
 
 <style scoped>
@@ -159,9 +162,14 @@ const handleHighlightClick = (highlight: string) => {
   margin: 0 auto;
 }
 
-.text-content {
-  flex: 1;
-  padding-right: 2rem;
+@media (min-width: 1024px) {
+    .text-container {
+        max-width: 412px;
+    }
+}
+.text-container {
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .text-line {
@@ -182,7 +190,7 @@ const handleHighlightClick = (highlight: string) => {
 }
 
 .highlights {
-  display: flex;
+  display: inline-block;
   flex-direction: column;
   gap: 1rem;
 }
@@ -193,7 +201,14 @@ const handleHighlightClick = (highlight: string) => {
   gap: 0.5rem;
   font-size: 1rem;
   color: #374151;
+  margin-bottom: 1rem;
 }
+
+/* .highlight:active {
+  background-color: #fe601966;
+  padding: 0.875rem;
+  border-radius: 0.25rem;
+} */
 
 .highlight-primary {
   background-color: #fe601966;
@@ -204,7 +219,7 @@ const handleHighlightClick = (highlight: string) => {
 }
 
 .visualization {
-  flex: 1;
+  /* flex: 1; */
   display: flex;
   flex-direction: column;
   align-items: flex-start;

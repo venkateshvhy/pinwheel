@@ -10,3 +10,41 @@
     --white-color: #ffffff;
     --brown-color: #666666
 }
+body{
+    background: #fafafa;
+}
+@media (min-width: 1280px) {
+    .container {
+        max-width: 1280px;
+    }
+}
+@media (min-width: 1024px) {
+    .container {
+        max-width: 1024px;
+    }
+}
+@media (min-width: 768px) {
+    .container {
+        max-width: 768px;
+    }
+}
+@media (min-width: 540px) {
+    .container {
+        max-width: 540px;
+    }
+}
+.container {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 2rem;
+    padding-left: 2rem;
+}
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1202px;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+}

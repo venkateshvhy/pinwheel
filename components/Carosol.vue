@@ -43,7 +43,7 @@ const swiperModules = [Pagination, Autoplay];
 </script>
 
 <template>
-  <div class="carousel-container">
+  <div class="container">
     <!-- :autoplay="{
         delay: 3000,
         disableOnInteraction: false,

@@ -19,9 +19,9 @@ export default defineNuxtConfig({
   },
   googleFonts: {
     families: {
-      Roboto: true,
-      Lato: [100, 300, 400, 700],
-      Poppins: true,
+      // Roboto: true,
+      // Lato: [100, 300, 400, 700],
+      // Poppins: true,
       // Merriweather: true,
     },
   },
@@ -32,6 +32,10 @@ export default defineNuxtConfig({
           rel: "stylesheet",
           href: "https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&display=swap",
         },
+        {
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        }
       ],
     },
   },
