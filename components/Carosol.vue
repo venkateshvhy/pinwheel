@@ -1,53 +1,29 @@
 <script  setup lang="ts">
+import { ref, onMounted } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import { GetCustomerReviews, GetPageContent } from '~/services/home';
 
-const testimonials = [
-  {
-    name: "Courtney Henry",
-    company: "microsoft corp",
-    description:
-      "Our platform helps build secure onboarding authentica experiences & engage your users. We build .",
-    image: Images.HenryImage,
-    rating: 4,
-  },
-  {
-    name: "Ronald Richards",
-    company: "Meta Limited",
-    description:
-      "Our platform helps build secure onboarding authentication experiences & engage your users. We build.",
-    image: Images.RichardImage,
-    rating: 5,
-  },
-  {
-    name: "Bessie Cooper",
-    company: "Apple Inc Ltd",
-    description:
-      "Our platform helps build secure onboarding authentication experiences & engage your users. We build.",
-    image: Images.CooperImage,
-    rating: 4,
-  },
-  {
-    name: "Courtney Henry",
-    company: "Microsoft Corp",
-    description:
-      "Our platform helps build secure onboarding authentication experiences & engage your users. We build.",
-    image: Images.HenryImage,
-    rating: 4,
-  },
-];
-
+const testimonials = ref();
 const swiperModules = [Pagination, Autoplay];
+
+const images: any = {
+  1: Images.RichardImage,
+  2: Images.HenryImage,
+  3: Images.CooperImage
+}
+
+onMounted(async () => {
+  const result = await GetCustomerReviews()
+  console.log("customer reviews", result);
+  testimonials.value = result.data
+})
 </script>
 
 <template>
   <div class="container">
-    <!-- :autoplay="{
-        delay: 3000,
-        disableOnInteraction: false,
-      }" -->
     <Swiper
       :modules="swiperModules"
       :slides-per-view="3"
@@ -78,11 +54,11 @@ const swiperModules = [Pagination, Autoplay];
         <div class="testimonial-card">
           <div class="card-content">
             <div class="profile-img-container">
-              <img class="profile-img" :src="testimonial.image" alt="profile picture" />
+              <img class="profile-img" :src="images[testimonial.id]" alt="profile picture" />
             </div>
             <h3 class="pt-8 name">{{ testimonial.name }}</h3>
             <p class="company">{{ testimonial.company }}</p>
-            <p class="description">{{ testimonial.description }}</p>
+            <p class="description">{{ testimonial.review }}</p>
             <div class="stars">
               <span
                 v-for="star in 5"
@@ -136,7 +112,7 @@ const swiperModules = [Pagination, Autoplay];
   width: 96px;
   height: 96px;
   margin-bottom: 1.5rem;
-  top: -33%;
+  top: -30%;
   z-index: 10;
 }
 

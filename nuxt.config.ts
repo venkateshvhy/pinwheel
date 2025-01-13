@@ -10,12 +10,18 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ["@nuxt/icon", "@nuxtjs/google-fonts"],
+  modules: ["@nuxt/icon", "@nuxtjs/google-fonts", "@pinia/nuxt"],
 
   // Add icon configuration
   icon: {
     size: "24px",
     class: "icon",
+  },
+  runtimeConfig: {
+    public: {
+      mode: process.env.MODE,
+      apiBaseURL: process.env.API_BASE_URL,
+    },
   },
   googleFonts: {
     families: {
@@ -34,8 +40,8 @@ export default defineNuxtConfig({
         },
         {
           rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
-        }
+          href: "https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap",
+        },
       ],
     },
   },

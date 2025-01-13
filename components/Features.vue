@@ -1,56 +1,16 @@
 <script setup lang="ts">
-const options = [
-  {
-    label: "Live Caption",
-    description: "Lorem ipsum dolor sit amet consectetur, adipiscing elit.",
-    icon: "heroicons:tv",
-  },
-  {
-    label: "Smart Reply",
-    description: "Lorem ipsum dolor sit amet consectetur, adipiscing elit.",
-    icon: "heroicons:paper-clip-solid",
-  },
-  {
-    label: "Sound Amplifier",
-    description: "Lorem ipsum dolor sit amet consectetur, adipiscing elit.",
-    icon: "heroicons:bell",
-  },
-  {
-    label: "Gesture Navigation",
-    description: "Lorem ipsum dolor sit amet consectetur, adipiscing elit.",
-    icon: "heroicons:globe-europe-africa",
-  },
-  {
-    label: "Dark Theme",
-    description: "Lorem ipsum dolor sit amet consectetur, adipiscing elit.",
-    icon: "heroicons:light-bulb",
-  },
-  {
-    label: "Privacy Controls",
-    description: "Lorem ipsum dolor sit amet consectetur, adipiscing elit.",
-    icon: "heroicons:arrow-path",
-  },
-  {
-    label: "Location Controls",
-    description: "Lorem ipsum dolor sit amet consectetur, adipiscing elit.",
-    icon: "heroicons:map-pin",
-  },
-  {
-    label: "Security Updates",
-    description: "Lorem ipsum dolor sit amet consectetur, adipiscing elit.",
-    icon: "heroicons:lock-closed",
-  },
-  {
-    label: "Focus Mode",
-    description: "Lorem ipsum dolor sit amet consectetur, adipiscing elit.",
-    icon: "heroicons:viewfinder-circle-solid",
-  },
-  {
-    label: "Family Link",
-    description: "Lorem ipsum dolor sit amet consectetur, adipiscing elit.",
-    icon: "heroicons:link",
-  },
-];
+import { ref, onMounted } from 'vue';
+import { GetPageContent } from '~/services/home';
+
+const options = ref();
+const highlightContent = ref()
+
+onMounted(async () => {
+  const resultData = await GetPageContent('highlight')
+  highlightContent.value = resultData.data[0]
+  const featuresData = await GetPageContent('feature');
+  options.value = featuresData.data;
+})
 </script>
 
 <template>
@@ -67,13 +27,12 @@ const options = [
           <h2
             class="text-[1.9rem] font-bold md:text-[2.4rem] heading text-center lg:text-start leading-tight"
           >
-            The Highlighting Part Of Our Solution
+            {{ highlightContent?.heading }}
           </h2>
         </div>
         <div class="lg:basis-2/5">
           <p class="text-[var(--secondary-color)] desc text-center lg:text-start">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
-            egestas Werat viverra id et aliquet. vulputate egestas sollicitudin.
+            {{ highlightContent?.description }}
           </p>
         </div>
       </div>
@@ -92,14 +51,14 @@ const options = [
           class="text-xl font-bold h4 lg:text-2xl heading"
             style="line-height: 1.75rem"
           >
-            {{ item.label }}
+            {{ item.heading }}
           </h3>
           <p
             class="mt-4 mb-4 text-[var(--secondary-color)] text-[.875rem] leading-[1.25rem] desc"
           >
             {{ item.description }}
           </p>
-          <Icon :name="item.icon" style="color: #fb89a8" size="26" />
+          <Icon :name="item.iconName" style="color: #fb89a8" size="26" />
         </div>
       </div>
     </div>

@@ -1,5 +1,14 @@
 <script setup lang="ts">
+import { ref, onMounted } from "vue";
 import PWButton from "~/common/PW-Button.vue";
+import { GetPageContent } from "~/services/home";
+
+const property = ref();
+
+onMounted(async () => {
+  const result = await GetPageContent('scale')
+  property.value = result.data[0]
+})
 </script>
 <template>
   <section class="relative py-16 banner">
@@ -12,14 +21,13 @@ import PWButton from "~/common/PW-Button.vue";
             class="text-[2.3rem] font-bold text-[var(--primary-color)] leading-tight md:text-[3rem]"
             style="font-family: var(--primary-font); --tw-text-opacity: 1;"
           >
-            Scale design & dev operations with Avocode Enterprise
+            {{ property?.heading }}
           </h1>
           <p class="text-[1rem] text-[var(--brown-color)] mt-6">
-            A fully integrated suite of authentication & authoriz products,
-            Stytch's platform removes the headache of.
+            {{ property?.description }}
           </p>
           <div class="flex mt-8">
-            <PWButton label="Download The Theme" />
+            <PWButton :label="property?.buttonLabel" />
           </div>
         </div>
 

@@ -1,18 +1,28 @@
 <script  setup lang="ts">
+import { ref, onMounted } from 'vue';
 import PWButton from '~/common/PW-Button.vue';
+import { GetPageContent } from '~/services/home';
 
 const title = "Helping teams in the world with focus";
 const description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi egestas Werat viverra id et aliquet. vulputate egestas sollicitudin.";
+
+const heroSectionData = ref();
+
+onMounted(async () => {
+  const result = await GetPageContent("helping");
+  heroSectionData.value = result.data[0]
+
+})
 </script>
 
 <template>
   <div class="m-8 hero-container row justify-center rounded-b-[80px] rounded-t-[20px] px-[30px] pb-[75px] pt-16">
     <div class="flex flex-col gap-10 hero-content lg:flex-row">
       <div class="text-content">
-        <h1 class="title heading text-[1.9rem] font-bold md:text-[2.4rem]">{{ title }}</h1>
-        <PWButton label="Download The Theme" />
+        <h1 class="title heading text-[1.9rem] font-bold md:text-[2.4rem]">{{ heroSectionData?.heading }}</h1>
+        <PWButton :label="heroSectionData?.buttonLabel" />
       </div>
-        <p class="w-full description">{{ description }}</p>
+        <p class="w-full description">{{ heroSectionData?.description }}</p>
     </div>
   </div>
 </template>

@@ -1,0 +1,24 @@
+{
+  "home": {
+    "menuList": {
+      "endpoint": "header",
+      "method": "GET"
+    },
+    "pageContent": {
+      "endpoint": "highlight",
+      "method": "GET"
+    },
+    "customer_reviews": {
+      "endpoint": "customer_review",
+      "method": "GET"
+    },
+    "footerList": {
+      "endpoint": "footer",
+      "method": "GET"
+    },
+    "content": {
+      "endpoint": "Content",
+      "method": "GET"
+    }
+  }
+}

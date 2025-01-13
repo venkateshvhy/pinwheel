@@ -1,34 +1,15 @@
 <script setup lang="ts">
 import { ref, watch, onMounted, onUnmounted } from "vue";
 import PWButton from "~/common/PW-Button.vue";
+import { GetMenuListApi } from "~/services/home";
+
 
 const isMobileMenuOpen = ref(false);
 const activeDropdown = ref<string | null>(null);
 const isHoveringDropdown = ref(false);
 const closeTimeoutRef = ref<number | null>(null);
 const isScrolled = ref(false);
-
-const navItems = [
-  { label: "Home", value: "Home" },
-  { label: "About", value: "About" },
-  { label: "Blog", value: "Blog" },
-  { label: "Features", value: "Features" },
-  { label: "How It Works", value: "How It Works" },
-  {
-    label: "Pages",
-    value: "Pages",
-    dropdown: [
-      { label: "Career", link: "#" },
-      { label: "Career Single", link: "#" },
-      { label: "Integrations", link: "#" },
-      { label: "Integration Single", link: "#" },
-      { label: "Pricing", link: "#" },
-      { label: "Changelogs", link: "#" },
-      { label: "Terms & Conditions", link: "#" },
-    ],
-  },
-  { label: "Contact", value: "Contact" },
-];
+const navItems = ref<any[]>([]);
 
 const toggleMobileMenu = () => {
   isMobileMenuOpen.value = !isMobileMenuOpen.value;
@@ -60,8 +41,10 @@ const handleScroll = () => {
   isScrolled.value = window.scrollY > 0;
 };
 
-onMounted(() => {
+onMounted(async() => {
   window.addEventListener("scroll", handleScroll);
+  const menuList = await GetMenuListApi();
+  navItems.value = menuList.data;
 });
 
 onUnmounted(() => {
@@ -97,34 +80,34 @@ watch(
         <!-- Desktop Navigation -->
         <ul class="navbar-nav order-2 hidden w-full flex-[0_0_100%] lg:order-1 lg:flex lg:w-auto lg:flex-auto lg:justify-center lg:space-x-5">
           <li class="nav-item" v-for="(item, index) in navItems" :key="index"
-           @mouseenter="item.dropdown ? handleMouseEnter(item.value) : null"
-           @mouseleave="item.dropdown ? handleMouseLeave(false) : null"
+           @mouseenter="item.children ? handleMouseEnter(item.name) : null"
+           @mouseleave="item.children ? handleMouseLeave(false) : null"
           >
-          <template v-if="item?.dropdown" class="relative group">
-            <span class="inline-flex items-center nav-link">{{ item.label }}
+          <template v-if="item?.children?.length > 0" class="relative group">
+            <span class="inline-flex items-center nav-link">{{ item.name }}
             <Icon name="heroicons:chevron-down-solid" class="font-bold " size="14" />
             </span>
           
             <div
-              v-if="item.dropdown"
-              v-show="activeDropdown === item.value"
+              v-if="item?.children?.length > 0"
+              v-show="activeDropdown === item.name"
               class="absolute z-10 w-48 py-2 mt-2 text-left bg-white rounded-md shadow-lg"
               @mouseenter="isHoveringDropdown = true"
               @mouseleave="isHoveringDropdown = false"
             >
               <a
-                v-for="dropdownItem in item.dropdown"
+                v-for="dropdownItem in item.children"
                 :key="dropdownItem.label"
                 :href="dropdownItem.link"
                 class="block px-4 py-1 text-gray-700 home-nav-link"
               >
-                {{ dropdownItem.label }}
+                {{ dropdownItem.name }}
               </a>
             </div>
           </template>
-            <a v-else href="" class="nav-link"
-            :class="{active: item.label === 'Home'}"
-            >{{ item.label }}</a>
+            <a v-else href="#" class="nav-link"
+            :class="{active: item.name === 'Home'}"
+            >{{ item.name }}</a>
           </li>
         </ul>
 
@@ -153,21 +136,21 @@ watch(
       class="relative left-0 right-0 flex flex-col order-3 w-full bg-white lg:hidden"
     >
       <div class="flex flex-col items-center px-2 pb-3 space-y-1">
-        <div v-for="item in navItems" :key="item.value" class="relative w-full">
+        <div v-for="item in navItems" :key="item.name" class="relative w-full">
           <button
-            @mouseenter="item.dropdown ? handleMouseEnter(item.value) : null"
-            @mouseleave="item.dropdown ? handleMouseLeave(true) : null"
+            @mouseenter="item.children ? handleMouseEnter(item.name) : null"
+            @mouseleave="item.children ? handleMouseLeave(true) : null"
             class="flex items-center justify-center w-full px-3 py-2 text-left home-nav-link"
             :class="{
-              'text-orange-500': activeDropdown === item.value,
-              active: item.label === 'Home',
+              'text-orange-500': activeDropdown === item.name,
+              active: item.name === 'Home',
             }"
           >
-            {{ item.label }}
+            {{ item.name }}
             <Icon
-              v-if="item.dropdown"
+              v-if="item?.children?.length > 0"
               :name="
-                activeDropdown === item.value
+                activeDropdown === item.name
                   ? 'heroicons:chevron-up-solid'
                   : 'heroicons:chevron-down-solid'
               "
@@ -178,19 +161,19 @@ watch(
 
           <!-- Mobile Dropdown -->
           <div
-            v-if="item.dropdown"
-            v-show="activeDropdown === item.value"
+            v-if="item.children"
+            v-show="activeDropdown === item.name"
             class="flex flex-col justify-center w-full py-2 bg-[#fe60190d]"
             @mouseenter="isHoveringDropdown = true"
             @mouseleave="isHoveringDropdown = false"
           >
             <a
-              v-for="dropdownItem in item.dropdown"
+              v-for="dropdownItem in item.children"
               :key="dropdownItem.label"
               :href="dropdownItem.link"
               class="block px-4 py-2 pl-6 text-center text-gray-700 home-nav-link"
             >
-              {{ dropdownItem.label }}
+              {{ dropdownItem.name }}
             </a>
           </div>
         </div>

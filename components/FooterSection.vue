@@ -1,5 +1,6 @@
 <script  setup lang="ts">
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
+import { GetFooterListApi } from '~/services/home';
 
 const socialLinks = ref([
   { icon: 'mdi:facebook', url: '#' },
@@ -8,12 +9,13 @@ const socialLinks = ref([
   { icon: 'mdi:skype', url: '#' }
 ]);
 
-const quickLinks = ref([
-  { name: 'About', url: '#' },
-  { name: 'Category', url: '#' },
-  { name: 'Testimonial', url: '#' },
-  { name: 'Contact', url: '#' }
-]);
+
+const quickLinks = ref();
+
+onMounted(async () => {
+  const result = await GetFooterListApi()
+  quickLinks.value = result.data
+})
 </script>
 
 <template>
@@ -65,7 +67,7 @@ const quickLinks = ref([
           <h3 class="text-[1rem] font-semibold text-[var(--primary-color)] desc">Location & Contact</h3>
           <div class="space-y-4">
             <p class="text-[var(--secondary-color)] desc text-[14px]">
-              2118 Thornridge Cir. Syracuse, Connecticut 35624
+              2118 Thornridge Cir. Syracuse, Connecticut 35624 
             </p>
             <p class="text-[var(--secondary-color)] desc text-[14px]">(704) 555-0127</p>
           </div>

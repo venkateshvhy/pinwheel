@@ -1,9 +1,20 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import PWButton from "~/common/PW-Button.vue";
+import { GetPageContent } from "~/services/home";
 
 // Track video playing state
 const isVideoPlaying = ref(false);
+
+const testMonialData = ref();
+const bottomData = ref();
+
+onMounted(async () => {
+  const result = await GetPageContent('accountability');
+  testMonialData.value = result.data[0]
+  const resultData = await GetPageContent('customers');
+  bottomData.value = resultData.data[0]
+})
 
 // Function to play the video
 const playVideo = () => {
@@ -21,13 +32,12 @@ const playVideo = () => {
           <h1
             class="text-[1.92rem] md:text-[2.4rem] font-bold leading-tight heading"
           >
-            Accountability that works for you
+            {{ testMonialData?.heading }}
           </h1>
           <p class="text-[var(--secondary-color)] desc">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
-            egestas Werat viverra id et aliquet. vulputate egestas sollicitudin.
+            {{ testMonialData?.description }}
           </p>
-          <PWButton label="Know About Us" />
+          <PWButton :label="testMonialData?.buttonLabel" />
         </div>
 
         <!-- Right content - Video section -->
@@ -76,11 +86,10 @@ const playVideo = () => {
       <!-- Testimonial section -->
       <div class="flex flex-col justify-between mt-5 mb-10 space-y-4 lg:flex-row lg:mt-0">
         <h2 class="font-bold text-[1.92rem] md:text-[2.4rem] leading-tight heading basis-6/12">
-          Our customers have nice things to say about us
+          {{ bottomData?.heading }}
         </h2>
         <p class="text-[var(--secondary-color)] desc basis-4/12 !mt-0">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi egestas
-          Werat viverra id et aliquet. vulputate egestas sollicitudin.
+          {{ bottomData?.description }}
         </p>
       </div>
     </section>

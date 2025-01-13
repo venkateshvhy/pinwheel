@@ -1,21 +1,27 @@
 <script setup lang="ts">
-import ViewportIndicator from '~/components/ViewportIndicator.vue';
-import Carosol from '../components/Carosol.vue';
+import ViewportIndicator from "~/components/ViewportIndicator.vue";
+import Carosol from "../components/Carosol.vue";
+import ServiceCall from "~/services/service-call";
 useHead({
-    title: 'Pinwheel-tailwind'
-})
+  title: "Pinwheel-tailwind",
+});
+
+// onMounted(() => {
+//   ServiceCall({ endpoint: "AAAA", method: "get" });
+// });
 </script>
 
 <template>
-    <div class="relative">
-        <ViewportIndicator />
-        <nav-bar></nav-bar>
-        <download-theme-content></download-theme-content>
-        <features></features>
-        <highlight-section></highlight-section>
-        <video-testimonial></video-testimonial>
-        <Carosol></Carosol>
-        <hero-section></hero-section>
-        <footer-section></footer-section>
-    </div>
+  <div class="relative">
+    <GlobalLoading />
+    <ViewportIndicator />
+    <nav-bar></nav-bar>
+    <download-theme-content></download-theme-content>
+    <features></features>
+    <highlight-section></highlight-section>
+    <video-testimonial></video-testimonial>
+    <Carosol></Carosol>
+    <hero-section></hero-section>
+    <footer-section></footer-section>
+  </div>
 </template>
