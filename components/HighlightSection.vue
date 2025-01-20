@@ -7,9 +7,9 @@ const secondHighlight = ref();
 
 // Icon mapping
 const iconMap: any = {
-  1: "🔥",
-  2: "🧭",
-  3: "⏳",
+  0: "🔥",
+  1: "🧭",
+  2: "⏳",
 };
 
 onMounted(async () => {
@@ -46,7 +46,7 @@ const handleHighlightClick = (highlight: string) => {
 
             <div class="md:-ml-8 lg:ml-0 highlights">
               <div
-                v-for="highlight in firstHighlight?.properties"
+                v-for="(highlight, index) in firstHighlight?.propertyList"
                 :key="highlight.id"
                 :class="[
                   'md:!pl-8 lg:!pl-2 highlight',
@@ -58,7 +58,7 @@ const handleHighlightClick = (highlight: string) => {
                   class="icon"
                   :style="{ color: highlight.color || '#000' }"
                 >
-                  {{ iconMap[highlight.id] || "❓" }}
+                  {{ iconMap[index] || "❓" }}
                 </span>
                 <span class="text desc text-line">{{ highlight.label }}</span>
               </div>
@@ -105,7 +105,7 @@ const handleHighlightClick = (highlight: string) => {
             </p>
             <ul class="space-y-3">
               <li
-                v-for="(feature, index) in secondHighlight?.properties"
+                v-for="(feature, index) in secondHighlight?.propertyList"
                 :key="index"
                 class="flex items-center gap-4 text-gray-700"
               >
